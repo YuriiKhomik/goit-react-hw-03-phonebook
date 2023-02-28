@@ -9,7 +9,7 @@ const initialValues = {
 
 export const PhonebookForm = ({ onSubmit }) => {
   const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
+    // console.log(values);
     onSubmit(values);
     resetForm();
   };
