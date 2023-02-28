@@ -27,18 +27,18 @@ export class App extends Component {
     this.setState(prevState => {
       const { contacts } = prevState;
       const match = contacts.find(contact => contact.name === newContact.name);
-      // if (match) {
-      //   return alert(`${newContact.name} is already in contacts.`);
-      // }
-      // return {
-      //   contacts: [newContact, ...prevState.contacts],
-      // };
       return match
         ? alert(`${newContact.name} is already in contacts.`)
         : {
             contacts: [newContact, ...prevState.contacts],
           };
     });
+  };
+
+  deleteContact = contactId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+    }));
   };
 
   changeFilter = e => {
@@ -65,7 +65,10 @@ export class App extends Component {
         <PhonebookForm onSubmit={this.addContact} />
         <h1>Contacts</h1>
         <Filter value={filter} onChange={this.changeFilter} />
-        <ContactList contacts={visibleContacts} />
+        <ContactList
+          contacts={visibleContacts}
+          onDeleteContact={this.deleteContact}
+        />
       </Box>
     );
   }

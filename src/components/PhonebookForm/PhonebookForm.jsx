@@ -1,4 +1,5 @@
 import { Formik } from 'formik';
+import PropTypes from 'prop-types';
 import { Button } from 'components/Button';
 import { StyledForm, Input } from './styled';
 
@@ -36,4 +37,8 @@ export const PhonebookForm = ({ onSubmit }) => {
       </StyledForm>
     </Formik>
   );
+};
+
+PhonebookForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 };
